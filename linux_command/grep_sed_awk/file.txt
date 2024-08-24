@@ -1,0 +1,10 @@
+name,age,sex,salary
+Alice,30,女,9000
+Bob,25,男,8000
+Carol,35,男,7000
+Karry,21,女,5000
+Ross,40,女,6500
+Joan,38,男,10000
+Linda,46,女,5000
+Lily,26,女,3000
+KARRY,27,女,6000
