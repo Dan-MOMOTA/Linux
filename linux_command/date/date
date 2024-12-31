@@ -1,0 +1,43 @@
+# !/usr/bin/bash
+
+# display current date and time, including the day of week,
+# month, year, time(in hh:mm:ss format), and time zone.
+date
+
+# option: -u, display the time in UTC
+date -u
+
+# option: --date, can display date as a string, which does
+# not affect the date and time of the system, but only
+# converts the date format to a string.
+date --date="5/20/2020 13:14"
+
+# could print past or future dates and times relative to
+# the current date.
+date --date="20 days ago"
+date --date="3 months ago"
+date --date="2 years ago"
+date --date="tomorrow"
+date --date="next week"
+
+# provide some options that allow users to customize the 
+# date output. -- more: date --help
+# %Y: Year(2024)
+# %m: Month(01 - 12)
+# %B: the full name of the month(January)
+# %b: the short name of the month(Jan)
+# %d: which day of the month(01)
+# %j: which day of the year(001)
+# %u: which day of the week(1)
+# %A: the full name of the week(Monday)
+# %a: the short name of the week(Mon)
+# %H: 24-hours(00-23)
+# %i: 12-hours(01-12)
+# %M: minute(00-59)
+# %S: second(00-60)
+date "+%Y/%m/%d"
+date "+%F"
+date "+%A %B %d %Y %T"
+
+# set the date and time
+date --set="20251230 12:00"
