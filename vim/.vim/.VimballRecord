@@ -1,2 +1,0 @@
-Align.vba: call delete('/home/dan/.vim/plugin/AlignPlugin.vim')|call delete('/home/dan/.vim/plugin/AlignMapsPlugin.vim')|call delete('/home/dan/.vim/plugin/cecutil.vim')|call delete('/home/dan/.vim/doc/Align.txt')|call delete('/home/dan/.vim/autoload/Align.vim')|call delete('/home/dan/.vim/autoload/AlignMaps.vim')
-visincr.vba: call delete('/home/dan/.vim/plugin/visincrPlugin.vim')|call delete('/home/dan/.vim/autoload/visincr.vim')|call delete('/home/dan/.vim/doc/visincr.txt')
