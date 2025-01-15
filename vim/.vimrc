@@ -107,6 +107,9 @@ nnoremap <S-Up> : resize -1<CR>
 nnoremap <S-Down> : resize +1<CR>
 nnoremap <S-Left> : vertical resize -5<CR>
 nnoremap <S-Right> : vertical resize +5<CR>
+nnoremap <Leader>p "+gp
+nnoremap <Leader>p "+y
+nnoremap <Leader>a :Ack -i
 
 """""" 缩进可视化 """"""
 " 随 vim 自启动
@@ -144,6 +147,9 @@ imap <TAB> <C-P>
 :ab cds_ uvm_config_db#()::set(,"","",);
 
 au BufReadPost * if line("'\"") >0|if line("'\"") <= line("$")|exe("norm '\"")|else|exe "norm $"|endif|endif
+
+cmap max set lines=999 columns=999
+cmap min set lines=5 columns=999
 
 cmap tn tabnew
 map <M-1> :tabn 1<CR>
@@ -195,6 +201,14 @@ nnoremap <Leader>rcw :call Replace(1, 1, input('Replace '.expand('<cword>').' wi
 "let g:UltiSnipsJumpForwardTrigger="<leader><tab>"
 "let g:UltiSnipsJumpBackwardTrigger="<leader><s-tab>"
 """""" 模板补全 """"""
+
+"""""" Fullscreen wmctrl """"""
+"fun! ToggleFullscreen()
+"    call system("wmctrl.py -ir ". v:windowid . " -b toggle,fullscreen")
+"endf
+"map <silent> <F11> :call ToggleFullscreen()<CR>
+"autocmd VimEnter * call ToggleFullscreen()
+"""""" Fullscreen wmctrl """"""
 
 autocmd BufNewFile *.py exec "call SetTitle()"
 autocmd BufNewFile *.v exec "call SetComment_v()"
