@@ -163,6 +163,23 @@ map <M-8> :tabn 8<CR>
 map <M-9> :tabn 9<CR>
 map <M-0> :tablast<CR>
 
+runtime macros/matchit.vim
+autocmd FileType systemverilog_uvm let b:match_words=
+    \ '\<begin\>:\<end\>,' .
+    \ '\<task\>:\<endtask\>,' .
+    \ '\<module\>:\<endmodule\>,' .
+    \ '\<package\>:\<endpackage\>,' .
+    \ '\<case\>\|\<casex\>\|\<casez\>:\<endcase\>,' .
+    \ '\<if\>:\<else if\>:\<else\>,' .
+    \ '\<function\>:\<endfunction\>,' .
+    \ '\<program\>:\<endprogram\>,' .
+    \ '\<class\>:\<endclass\>,' .
+    \ '\<fork\>:\<join\>\|\<join_any\>\|\<join_none\>,' .
+    \ '\<ifndef\>:`else\>:`endif\>,' .
+    \ '\<ifdef\>:`else\>:`endif\>,' .
+    \ '\<covergroup\>:\<endgroup\>'
+let b:matchit_ignorecase=1
+
 " 替换函数。参数说明：
 " confirm：是否替换前逐一确认
 " wholeword：是否整词匹配
