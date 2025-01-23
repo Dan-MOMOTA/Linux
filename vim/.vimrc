@@ -110,6 +110,8 @@ nnoremap <S-Right> : vertical resize +5<CR>
 nnoremap <Leader>p "+gp
 nnoremap <Leader>p "+y
 nnoremap <Leader>a :Ack -i
+nnoremap <Leader>nw :set nowrap<CR>
+nnoremap <Leader>w :set wrap<CR>
 
 """""" 缩进可视化 """"""
 " 随 vim 自启动
