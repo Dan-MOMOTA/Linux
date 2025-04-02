@@ -76,3 +76,6 @@ alias tree 'tree -A -C'
 alias p3 'python3'
 alias p 'python'
 alias dve 'dve -full64 -cov -dir -covdir ./cov/cm.vdb &'
+alias lt 'ls -t | head -n 5'
+alias gt 'ls -t | head -n 1 | xargs gvim'
+
