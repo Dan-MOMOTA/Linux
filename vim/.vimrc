@@ -34,6 +34,12 @@ let mapleader = "'"
 
 winpos 150 150
 set lines=999 columns=999
+" 取消光标闪烁
+set gcr=a:blinkon0
+" 显示代码结构
+" let g:indent_guides_enable_on_vim_startup = 1
+" let g:indent_guides_color_change_percent = 6
+
 set guifont=Monospace\ 12
 syntax enable
 "colorscheme desert
