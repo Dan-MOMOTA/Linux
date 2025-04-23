@@ -77,7 +77,7 @@ alias grep 'grep -n --color'
 alias tree 'tree -A -C'
 alias p3 'python3'
 alias dve 'dve -full64 -cov -dir -covdir ./cov/cm.vdb &'
-alias lt 'll -t | head -n 10'
+alias lt 'll -t --color=always | head -n 10'
 alias f1rm 'find . -mtime +1 -exec rm -rf {} \;'
 alias f2rm 'find . -mtime +2 -exec rm -rf {} \;'
 
