@@ -39,7 +39,7 @@ set light_magenta = "%{\e[0;95m%}"
 set light_cyan = "%{\e[0;96m%}"
 set white = "%{\e[0;97m%}"
 
-alias setprompt 'set prompt = "$light_magenta\[`whoami`\]$light_magenta@`hostname`: $white`pwd` >"'
+alias setprompt 'set prompt = "%{\e]2;`basename $PWD`\a%}$light_magenta\[`whoami`\]$light_magenta@`hostname`: $white~ >"'
 #set prompt = "$light_magenta\[`whoami`\]$light_magenta@`hostname`: $white`pwd` >"
 setprompt
 
@@ -80,4 +80,6 @@ alias dve 'dve -full64 -cov -dir -covdir ./cov/cm.vdb &'
 alias lt 'll -t --color=always | head -n 10'
 alias f1rm 'find . -mtime +1 -exec rm -rf {} \;'
 alias f2rm 'find . -mtime +2 -exec rm -rf {} \;'
+alias ce 'crontab -e'
+alias cl 'crontab -l'
 
