@@ -5,23 +5,26 @@ set rtp+=~/.vim/bundle/Vundle.vim
 " vundle 管理的插件列表必须位于 vundle#begin() 和 vundle#end() 之间
 call vundle#begin()
 "Plugin 'VundleVim/Vundle.vim'
-Plugin 'file://~/.vim/bundle/Vundle.vim'
-Plugin 'file://~/.vim/bundle/ack.vim'
-Plugin 'file://~/.vim/bundle/auto-pairs'
-Plugin 'file://~/.vim/bundle/dracula'
-Plugin 'file://~/.vim/bundle/vim-airline-master'
-Plugin 'file://~/.vim/bundle/vim-airline-themes-master'
-Plugin 'file://~/.vim/bundle/vim-colors-solarized'
-"""""" 缩进可视化1 """"""
-"Plugin 'file://~/.vim/bundle/vim-indent-guides-master'
-"""""" 缩进可视化2 """"""
-"Plugin 'file://~/.vim/bundle/indentLine'
-Plugin 'file://~/.vim/bundle/nerdcommenter'
-"""""" 模板补全 """"""
-"Plugin 'file://~/.vim/bundle/ultisnips'
-"""""" 模板补全 """"""
-"Plugin 'file://~/.vim/bundle/vim-snippets'
-" 插件列表结束
+if has("gui_running")
+    Plugin 'file://~/.vim/bundle/Vundle.vim'
+    Plugin 'file://~/.vim/bundle/ack.vim'
+    Plugin 'file://~/.vim/bundle/auto-pairs'
+    Plugin 'file://~/.vim/bundle/dracula'
+    Plugin 'file://~/.vim/bundle/vim-airline-master'
+    Plugin 'file://~/.vim/bundle/vim-airline-themes-master'
+    Plugin 'file://~/.vim/bundle/vim-colors-solarized'
+    "Plugin 'file://~/.vim/bundle/tagbar-master'
+    """""" 缩进可视化1 """"""
+    Plugin 'file://~/.vim/bundle/vim-indent-guides-master'
+    """""" 缩进可视化2 """"""
+    "Plugin 'file://~/.vim/bundle/indentLine'
+    Plugin 'file://~/.vim/bundle/nerdcommenter'
+    """""" 模板补全 """"""
+    "Plugin 'file://~/.vim/bundle/ultisnips'
+    """""" 模板补全 """"""
+    "Plugin 'file://~/.vim/bundle/vim-snippets'
+    " 插件列表结束
+endif
 call vundle#end()
 filetype plugin indent on
 " 常用的命令
@@ -33,18 +36,28 @@ filetype plugin indent on
 let mapleader = "'"
 
 winpos 150 150
-set lines=999 columns=999
+
+if has("gui_running")
+    set lines=999 columns=999
+    set mouse=a
+endif
 " 取消光标闪烁
 set gcr=a:blinkon0
 " 显示代码结构
-" let g:indent_guides_enable_on_vim_startup = 1
-" let g:indent_guides_color_change_percent = 6
+let g:indent_guides_enable_on_vim_startup = 1
+let g:indent_guides_color_change_percent = 6
+"let g:indent_guides_auto_colors = 1
+"autocmd VimEnter Colorscheme * :hi IndentGuidesOdd guibg=red ctermbg=3
+"autocmd VimEnter Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 set guifont=Monospace\ 12
 syntax enable
-"colorscheme desert
-colorscheme dracula
-"colorscheme solarized
+
+if has("gui_running")
+    colorscheme dracula
+    "colorscheme solarized
+    "colorscheme desert
+endif
 
 set guioptions-=l
 set guioptions-=L
@@ -81,30 +94,32 @@ set autoindent
 set cindent
 set encoding=utf-8 "solution of path ?
 set nocp "for align
-
-set mouse=a
+set backspace=indent,eol,start
 
 "inoremap ( ()<ESC>i
 "inoremap { {}<ESC>i
 "inoremap [ []<ESC>i
 "inoremap " ""<ESC>i
 "inoremap ' ''<ESC>i
- 
-func Max()
-	colorscheme=desert
-	set guifont=Monospace\ 18
-	"set guifont=Bitstream_Vera_Sans_Mono:h24:uANSI
-endfunc
 
-func Mid()
-	colorscheme=desert
-	set guifont=Monospace\ 15
-endfunc
 
-func Min()
-	colorscheme=desert
-	set guifont=Monospace\ 12
-endfunc
+if has("gui_running")
+	func Max()
+		colorscheme=desert
+		set guifont=Monospace\ 18
+		"set guifont=Bitstream_Vera_Sans_Mono:h24:uANSI
+	endfunc
+	
+	func Mid()
+		colorscheme=desert
+		set guifont=Monospace\ 15
+	endfunc
+	
+	func Min()
+		colorscheme=desert
+		set guifont=Monospace\ 12
+	endfunc
+endif
 
 nnoremap <C-ScrollWheelUp> :call Max()<CR>
 nnoremap <C-ScrollWheelDown> :call Min()<CR>
@@ -114,10 +129,22 @@ nnoremap <S-Down> : resize +1<CR>
 nnoremap <S-Left> : vertical resize -5<CR>
 nnoremap <S-Right> : vertical resize +5<CR>
 nnoremap <Leader>p "+gp
-nnoremap <Leader>p "+y
+nnoremap <Leader>y "+y
 nnoremap <Leader>a :Ack -i
 nnoremap <Leader>nw :set nowrap<CR>
 nnoremap <Leader>w :set wrap<CR>
+nnoremap <Leader>f <C-w>f
+nnoremap <Leader>s <C-w>s:e.<CR>
+nnoremap <Leader>v <C-w>v:e.<CR>
+
+"file jump
+autocmd FileType verilog setlocal suffixesadd=.v,.sv
+autocmd FileType systemverilog setlocal suffixesadd=.v,.sv
+set path+=../../*
+set path+=../../*/*
+set isf+={,}
+set isf-=+
+set isf-=#
 
 """""" 缩进可视化 """"""
 " 随 vim 自启动
@@ -130,12 +157,13 @@ nnoremap <Leader>w :set wrap<CR>
 ":nmap <silent> <Leader>i <Plug>IndentGuidesToggle
 """""" 缩进可视化 """"""
 
+
 " 基于缩进或语法进行代码折叠
 "set foldmethod=indent
-"set foldmethod=marker
-set foldmethod=syntax
+set foldmethod=marker
+"set foldmethod=syntax
 " 启动 vim 时关闭折叠代码
-set nofoldenable
+"set nofoldenable
 
 imap <TAB> <C-P>
 :ab m_ module ();<Enter>endmodule
