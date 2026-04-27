@@ -56,7 +56,18 @@ syntax enable
 if has("gui_running")
     colorscheme dracula
     "colorscheme solarized
-    "colorscheme desert
+else
+    colorscheme desert
+    let &t_SI.="\e[5 q" "SI = INSERT mode
+    let &t_SR.="\e[4 q" "SR = REPLACE mode
+    let &t_EI.="\e[1 q" "EI = NORMAL mode (ELSE)
+    "Cursor settings:
+    "  1 -> blinking block
+    "  2 -> solid block
+    "  3 -> blinking underscore
+    "  4 -> solid underscore
+    "  5 -> blinking vertical bar
+    "  6 -> solid vertical bar
 endif
 
 set guioptions-=l
@@ -129,7 +140,8 @@ nnoremap <S-Down> : resize +1<CR>
 nnoremap <S-Left> : vertical resize -5<CR>
 nnoremap <S-Right> : vertical resize +5<CR>
 nnoremap <Leader>p "+gp
-nnoremap <Leader>y "+y
+inoremap <Leader>y "+y
+nnoremap <Leader>sv /SEQ<CR>Ea.sv<Esc><C-w>f<C-w><Down>u<C-w><Up>
 nnoremap <Leader>a :Ack -i
 nnoremap <Leader>nw :set nowrap<CR>
 nnoremap <Leader>w :set wrap<CR>
