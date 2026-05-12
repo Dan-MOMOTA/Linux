@@ -148,6 +148,13 @@ nnoremap <Leader>w :set wrap<CR>
 nnoremap <Leader>f <C-w>f
 nnoremap <Leader>s <C-w>s:e.<CR>
 nnoremap <Leader>v <C-w>v:e.<CR>
+vnoremap <S-MiddleMouse> y/<MiddleMouse><CR>
+nnoremap <expr> <Up> v:count == 0 ? 'gk' : 'k'
+nnoremap <expr> <Down> v:count == 0 ? 'gj' : 'g'
+nnoremap <C-s> :w<CR>
+nnoremap <C-q> :q<CR>
+inoremap <C-s> <Esc>:w<CR>
+inoremap <C-q> <Esc>:q<CR>
 
 "file jump
 autocmd FileType verilog setlocal suffixesadd=.v,.sv
