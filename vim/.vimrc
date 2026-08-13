@@ -148,6 +148,7 @@ nnoremap <Leader>w :set wrap<CR>
 nnoremap <Leader>f <C-w>f
 nnoremap <Leader>s <C-w>s:e.<CR>
 nnoremap <Leader>v <C-w>v:e.<CR>
+nnoremap <Leader>pwd :let @+ = expand('%:p')<CR>
 vnoremap <S-MiddleMouse> y/<MiddleMouse><CR>
 nnoremap <expr> <Up> v:count == 0 ? 'gk' : 'k'
 nnoremap <expr> <Down> v:count == 0 ? 'gj' : 'g'
